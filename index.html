@@ -1,487 +1,534 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style type="text/css" media="all">
-      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@400;700&family=Kanit&family=Tilt+Prism&display=swap");
-      body {
-        font-family: "Arial", sans-serif;
-        text-align: center;
-        background: black;
-      }
-      ::selection {
-        background: white;
-        border-radius: 10px;
-      }
-
-      #output {
-        font-size: 8em;
-        font-weight: 800;
-        font-family: "Kanit", sans-serif;
-        height: 100vh;
-      }
-      .output{
-        white-space: nowrap;
-        animation: berjalan 5.5s linear infinite;
-      }
-
-      @keyframes berjalan {
-        from {
-          transform: translateX(100%);
-        }
-        to {
-          transform: translateX(-150%);
-        }
-      }
-
-      .timer-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100vh;
-        margin-top: 20px;
-      }
-
-      input,
-      button {
-        margin: 5px;
-        padding: 5px;
-      }
-
-      .gsjaLogo {
-        float: left;
-      }
-      #timer {
-        font-weight: 800;
-        color: white;
-        font-family: "Arial", sans-serif;
-      }
-      #hours::placeholder {
-        color: white;
-        font-size: 1.3em;
-        font-family: "Kanit", sans-serif;
-      }
-      #hours {
-        color: white;
-        border-radius: 3px;
-        font-weight: bold;
-        background: #798ce6;
-        border: 2px solid whitesmoke;
-      }
-      #minutes::placeholder {
-        font-family: "Kanit", sans-serif;
-        font-size: 1.3em;
-        color: white;
-      }
-      #minutes {
-        border-radius: 3px;
-        color: white;
-        font-weight: bold;
-        background: #42c04f;
-        border: 2px solid whitesmoke;
-      }
-      #seconds::placeholder {
-        font-family: "Kanit", sans-serif;
-        font-size: 1.3em;
-        color: white;
-      }
-      #seconds {
-        border-radius: 3px;
-        color: white;
-        font-weight: bold;
-        background: #e68779;
-        border: 2px solid whitesmoke;
-      }
-      .input1 {
-        color: black;
-        font-family: "Kanit", Sans-Serif;
-      }
-      .input {
-        color: white;
-        font-weight: bold;
-      }
-      .full:hover {
-        transform: scale(1.1);
-        color: white;
-        border-radius: 5px;
-        transition: 0.8s;
-        border: 2px solid #7a99e5;
-      }
-      .full {
-        transition: 0.8s;
-        padding: 0;
-        margin: 0;
-      }
-      .klik:hover,
-      .klik:focus,
-      .klik:active {
-        background: #7a99e5;
-        transform: scale(1.2);
-        color: white;
-        transition: 0.8s;
-        cursor: pointer;
-      }
-      .klik {
-        transition: 0.8s;
-        background: #efefef;
-        border: none;
-        color: black;
-        font-weight: 850;
-        border-radius: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-family: "Kanit", sans-serif;
-        overflow-x: auto;
-      }
-      @keyframes kelapKelip {
-        50% {
-          opacity: 0;
-        }
-      }
-      .blinking {
-        animation: kelapKelip 1.1s infinite steps(1);
-        transition: none;
-      }
-      #fontSizeLabel{
-        color: white;
-        text-align: center;
-        border-radius: 3px;
-        padding: 5px;
-        background: #42a19e;
-      }
-      #fontSizeLabelNote{
-        color: white;
-        text-align: center;
-        border-radius: 3px;
-        padding: 5px;
-        background: #42a19e;
-      }
-      @media screen and (max-width: 768px) {
-        .gsjaLogo {
-          width: 25px;
-        }
-        #timer {
-          font-size: 5em;
-        }
-        .BungkusJam {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-        }
-        .full {
-          width: 30px;
-        }
-      }
-
-      @media screen and (min-width: 768px) {
-        .gsjaLogo {
-          width: 50px;
-        }
-        #timer {
-          font-size: 15em;
-        }
-        #hours {
-          font-size: 1.5em;
-        }
-        #minutes {
-          font-size: 1.5em;
-        }
-        #seconds {
-          font-size: 1.5em;
-        }
-        .klik {
-          font-size: 2em;
-        }
-        .full {
-          width: 80px;
-        }
-      }
-
-      @media screen and (orientation: landscape) {
-        #timer {
-          font-size: 11em;
-        }
-        .full {
-          width: 50px;
-        }
-        .BungkusJam {
-          font-size: 0.5em;
-        }
-        .klik {
-          font-size: 1em;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <img class="gsjaLogo" src="gsjalogo.png" alt="" />
-    <br />
-    <br />
-    <div class="timer-container">
-      <div id="timer">00:00:00</div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-    </div>
-    <div class="BungkusJam">
-      <input type="number" id="hours" placeholder="Jam" />
-      <input type="number" id="minutes" placeholder="Menit" />
-      <input type="number" id="seconds" placeholder="Detik" />
-    </div>
-    <br />
-    <button class="klik" onclick="startTimer()">Start</button>
-    <button class="klik" id="p" onclick="pauseTimer()">Pause</button>
-    <button class="klik" onclick="resetTimer()">Reset</button>
-    <button class="klik" onclick="timesUp()">TimesUp</button>
-    <br />
-    <input type="range" id="fontSizeSlider" min="1" max="15" value="10" step="1" oninput="changeFontSize()">
-    <br />
-    <span id="fontSizeLabel">Font Size: 10em</span>
-    <br />
-    <br />
-    <!-- Tambahkan tombol fullscreen -->
-    <img
-      class="full"
-      onclick="toggleFullscreen()"
-      src="fullscreen.png"
-      alt=""
-    />
-    <img
-      class="full"
-      onclick="toggleFullscreen()"
-      src="exit-fullscreen.png"
-      alt=""
-    />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-      <br />
-      <br />
-      <label for="userInput" class="input">Text Note </label>
-      <label for="userInput" class="input">Masukkan Teks:</label>
-      <br />
-      <input
-        class="input1"
-        type="text-area"
-        id="userInput"
-        placeholder="Ketik di sini..."
-      />
-      <br />
-      <button class="klik" onclick="displayText()">Tampilkan</button>
-      <button class="klik" onclick="clearText()">Hapus</button>
-      <button class="klik" onclick="animationText()">Animasi</button>
-      <button class="klik" onclick="removeAniText()">Remove Animasi</button>
-    <input type="range" id="fontSizeSliderNote" min="1" max="20" value="10" step="1" oninput="changeFontSizeNote()">
-    <br />
-    <span id="fontSizeLabelNote">Font Size: 10em</span>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div id="output"></div>
-      <br />
-      <br />
-      <script>
-        const note =
-          "NOTE : \n Masukan angka sesuai kebutuhan !\n biru = jam \n hijau = menit \n merah muda = detik \n\n Cara penggunaan : \nMasukan angka sesuai kebutuhan lalu klik start, \n untuk menghentikan waktu klik pause, \n untuk mengubah waktu kembali jadi seperti semula 00:00:00 klik reset, \nuntuk menambah keterangan 'Waktu hahis' klik TimesUp,\nuntuk memperbesar tampilan web/fullscreen klik icon pembesar dipaling bawah, untuk mengembalikan fullscreen menjadi normal klik icon memperkecil disebelahnya.";
-        alert(note);
-
-        function displayText() {
-          // Ambil nilai dari elemen input
-          const userInput = document.getElementById("userInput").value;
-
-          // Tampilkan nilai di elemen output
-          document.getElementById("output").innerText = `${userInput}`;
-          document.getElementById("output").style.color = "white";
-        }
-        
-        function animationText(){
-          document.getElementById("output").classList.add('output');
-        }
-        function removeAniText(){
-          document.getElementById("output").classList.remove('output');
-        }
-
-        function clearText() {
-          // Kosongkan nilai pada elemen input dan output
-          document.getElementById("userInput").value = "";
-          document.getElementById("output").innerText = "";
-        }
-
-        let timer;
-        let isTimerRunning = false;
-        let isTimerPaused = false;
-        let totalTime;
-
-        function startTimer() {
-          if (isTimerRunning) {
-            return;
-          }
-
-          const hours = document.getElementById("hours").value || 0;
-          const minutes = document.getElementById("minutes").value || 0;
-          const seconds = document.getElementById("seconds").value || 0;
-
-          totalTime =
-            parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds);
-
-          if (totalTime <= 0) {
-            alert("Harap masukkan waktu yang valid.");
-            return;
-          }
-
-          isTimerRunning = true;
-          document.getElementById("hours").value = "";
-          document.getElementById("minutes").value = "";
-          document.getElementById("seconds").value = "";
-
-          timer = setInterval(function () {
-            if (!isTimerPaused) {
-              displayTime(totalTime);
-
-              if (totalTime <= 0) {
-                stopTimer();
-              } else {
-                totalTime--;
-              }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style type="text/css" media="all">
+            @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@400;700&family=Kanit&family=Tilt+Prism&display=swap");
+            body {
+                font-family: "Arial", sans-serif;
+                text-align: center;
+                background: black;
             }
-          }, 1000);
-        }
+            ::selection {
+                background: white;
+                border-radius: 10px;
+            }
+            ::-webkit-scrollbar {
+                scroll-behavior: smooth;
+                width: 5px;
+            }
 
-        function pauseTimer() {
-          isTimerPaused = !isTimerPaused;
+            ::-webkit-scrollbar-track {
+                scroll-behavior: smooth;
+                background: #101010;
+            }
 
-          if (isTimerPaused) {
-            clearInterval(timer);
-          } else {
-            startTimer();
-          }
-        }
+            ::-webkit-scrollbar-thumb {
+                scroll-behavior: smooth;
+                background: #101010;
+            }
 
-        function pauseTimer() {
-          alert("Pause. klik ok untuk melanjutkan");
-        }
+            ::-webkit-scrollbar-thumb:hover {
+                scroll-behavior: smooth;
+                background: #ffffff;
+            }
 
-        function resetTimer() {
-          clearInterval(timer);
-          isTimerRunning = false;
-          isTimerPaused = false;
+            #output {
+                font-size: 8em;
+                font-weight: 800;
+                font-family: "Kanit", sans-serif;
+                height: 100vh;
+            }
+            .output {
+                white-space: nowrap;
+                animation: berjalan 5.5s linear infinite;
+            }
 
-          document.getElementById("timer").innerHTML = "00:00:00";
-          document.getElementById("timer").style.color = "white";
-          document.getElementById("timer").classList.remove("blinking"); // Memulai kembali timer setelah
-          document.getElementById("hours").value = "";
-          document.getElementById("minutes").value = "";
-          document.getElementById("seconds").value = "";
-          // Mereset tampilan timer
-        }
+            @keyframes berjalan {
+                from {
+                    transform: translateX(100%);
+                }
+                to {
+                    transform: translateX(-150%);
+                }
+            }
 
-        function timesUp(params) {
-          document.getElementById("timer").innerHTML = "WAKTU HABIS !";
-          document.getElementById("timer").style.color = "red";
-        }
+            .timer-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 100vh;
+                margin-top: 20px;
+            }
 
-        function displayTime(totalSeconds) {
-          const hours = Math.floor(totalSeconds / 3600);
-          const minutes = Math.floor((totalSeconds % 3600) / 60);
-          const seconds = totalSeconds % 60;
+            input,
+            button {
+                margin: 5px;
+                padding: 5px;
+            }
 
-          const formattedTime = `${hours.toString().padStart(2, "0")}:${minutes
-            .toString()
-            .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            .gsjaLogo {
+                float: left;
+            }
+            #timer {
+                font-weight: 800;
+                color: white;
+                font-family: "Arial", sans-serif;
+            }
+            #hours::placeholder {
+                color: white;
+                font-size: 1.3em;
+                font-family: "Kanit", sans-serif;
+            }
+            #hours {
+                color: white;
+                border-radius: 3px;
+                font-weight: bold;
+                background: #798ce6;
+                border: 2px solid whitesmoke;
+            }
+            #minutes::placeholder {
+                font-family: "Kanit", sans-serif;
+                font-size: 1.3em;
+                color: white;
+            }
+            #minutes {
+                border-radius: 3px;
+                color: white;
+                font-weight: bold;
+                background: #42c04f;
+                border: 2px solid whitesmoke;
+            }
+            #seconds::placeholder {
+                font-family: "Kanit", sans-serif;
+                font-size: 1.3em;
+                color: white;
+            }
+            #seconds {
+                border-radius: 3px;
+                color: white;
+                font-weight: bold;
+                background: #e68779;
+                border: 2px solid whitesmoke;
+            }
+            .input1 {
+                color: black;
+                font-family: "Kanit", Sans-Serif;
+            }
+            .input {
+                color: white;
+                font-weight: bold;
+            }
+            .full:hover {
+                transform: scale(1.1);
+                color: white;
+                border-radius: 5px;
+                transition: 0.8s;
+                border: 2px solid #7a99e5;
+            }
+            .full {
+                transition: 0.8s;
+                padding: 0;
+                margin: 0;
+            }
+            .klik:hover,
+            .klik:focus,
+            .klik:active {
+                background: #7a99e5;
+                transform: scale(1.2);
+                color: white;
+                transition: 0.8s;
+                cursor: pointer;
+            }
+            .klik {
+                transition: 0.8s;
+                background: #efefef;
+                border: none;
+                color: black;
+                font-weight: 850;
+                border-radius: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                font-family: "Kanit", sans-serif;
+                overflow-x: auto;
+            }
+            @keyframes kelapKelip {
+                50% {
+                    opacity: 0;
+                }
+            }
+            .blinking {
+                animation: kelapKelip 1.1s infinite steps(1);
+                transition: none;
+            }
+            #fontSizeLabel {
+                color: white;
+                text-align: center;
+                border-radius: 3px;
+                padding: 5px;
+                background: #42a19e;
+            }
+            #fontSizeLabelNote {
+                color: white;
+                text-align: center;
+                border-radius: 3px;
+                padding: 5px;
+                background: #42a19e;
+            }
+            @media screen and (max-width: 768px) {
+                .gsjaLogo {
+                    width: 25px;
+                }
+                #timer {
+                    font-size: 5em;
+                }
+                .BungkusJam {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                }
+                .full {
+                    width: 30px;
+                }
+            }
 
-          document.getElementById("timer").innerHTML = formattedTime;
+            @media screen and (min-width: 768px) {
+                .gsjaLogo {
+                    width: 50px;
+                }
+                #timer {
+                    font-size: 15em;
+                }
+                #hours {
+                    font-size: 1.5em;
+                }
+                #minutes {
+                    font-size: 1.5em;
+                }
+                #seconds {
+                    font-size: 1.5em;
+                }
+                .klik {
+                    font-size: 2em;
+                }
+                .full {
+                    width: 80px;
+                }
+            }
 
-          // function warna merah setelah 2 menit ...
-          if (totalSeconds <= 360) {
-            document.getElementById("timer").style.color = "red";
-          } else {
-            document.getElementById("timer").style.color = "white";
-            document.getElementById("timer").classList.remove("blinking");
-          }
+            @media screen and (orientation: landscape) {
+                #timer {
+                    font-size: 11em;
+                }
+                .full {
+                    width: 50px;
+                }
+                .BungkusJam {
+                    font-size: 0.5em;
+                }
+                .klik {
+                    font-size: 1em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <img class="gsjaLogo" src="gsjalogo.png" alt="" />
+        <br />
+        <br />
+        <div class="timer-container">
+            <div id="timer">00:00:00</div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+        <div class="BungkusJam">
+            <input type="number" id="hours" placeholder="Jam" />
+            <input type="number" id="minutes" placeholder="Menit" />
+            <input type="number" id="seconds" placeholder="Detik" />
+        </div>
+        <br />
+        <button class="klik" onclick="startTimer()">Start</button>
+        <button class="klik" id="p" onclick="pauseTimer()">Pause</button>
+        <button class="klik" onclick="resetTimer()">Reset</button>
+        <button class="klik" onclick="timesUp()">TimesUp</button>
+        <br />
+        <input
+            type="range"
+            id="fontSizeSlider"
+            min="1"
+            max="25"
+            value="10"
+            step="1"
+            oninput="changeFontSize()"
+        />
+        <br />
+        <span id="fontSizeLabel">Font Size: 10em</span>
+        <br />
+        <br />
+        <!-- Tambahkan tombol fullscreen -->
+        <img
+            class="full"
+            onclick="toggleFullscreen()"
+            src="fullscreen.png"
+            alt=""
+        />
+        <img
+            class="full"
+            onclick="toggleFullscreen()"
+            src="exit-fullscreen.png"
+            alt=""
+        />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <label for="userInput" class="input">Text Note </label>
+        <label for="userInput" class="input">Masukkan Teks:</label>
+        <br />
+        <input
+            class="input1"
+            type="text-area"
+            id="userInput"
+            placeholder="Ketik di sini..."
+        />
+        <br />
+        <button class="klik" onclick="displayText()">Tampilkan</button>
+        <button class="klik" onclick="clearText()">Hapus</button>
+        <button class="klik" onclick="animationText()">Animasi</button>
+        <button class="klik" onclick="removeAniText()">Remove Animasi</button>
+        <input
+            type="range"
+            id="fontSizeSliderNote"
+            min="1"
+            max="20"
+            value="10"
+            step="1"
+            oninput="changeFontSizeNote()"
+        />
+        <br />
+        <span id="fontSizeLabelNote">Font Size: 10em</span>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
-          if (totalSeconds <= 180) {
-            document.getElementById("timer").classList.add("blinking");
-          }
+        <br />
+        <br />
+        <br />
+        <br />
 
-          if (totalSeconds <= 0) {
-            document.getElementById("timer").innerHTML = "WAKTU HABIS !";
-          }
-        }
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div id="output"></div>
+        <br />
+        <br />
+        <script>
+            const note =
+                "NOTE : \n Masukan angka sesuai kebutuhan !\n biru = jam \n hijau = menit \n merah muda = detik \n\n Cara penggunaan : \nMasukan angka sesuai kebutuhan lalu klik start, \n untuk menghentikan waktu klik pause, \n untuk mengubah waktu kembali jadi seperti semula 00:00:00 klik reset, \nuntuk menambah keterangan 'Waktu hahis' klik TimesUp,\nuntuk memperbesar tampilan web/fullscreen klik icon pembesar dipaling bawah, untuk mengembalikan fullscreen menjadi normal klik icon memperkecil disebelahnya.";
+            alert(note);
 
-        // kode toggleFullscreen ...
+            function displayText() {
+                // Ambil nilai dari elemen input
+                const userInput = document.getElementById("userInput").value;
 
-        function toggleFullscreen() {
-          const doc = window.document;
-          const docEl = doc.documentElement;
+                // Tampilkan nilai di elemen output
+                document.getElementById("output").innerText = `${userInput}`;
+                document.getElementById("output").style.color = "white";
+            }
 
-          const requestFullScreen =
-            docEl.requestFullscreen ||
-            docEl.mozRequestFullScreen ||
-            docEl.webkitRequestFullScreen ||
-            docEl.msRequestFullscreen;
-          const cancelFullScreen =
-            doc.exitFullscreen ||
-            doc.mozCancelFullScreen ||
-            doc.webkitExitFullscreen ||
-            doc.msExitFullscreen;
+            function animationText() {
+                document.getElementById("output").classList.add("output");
+            }
+            function removeAniText() {
+                document.getElementById("output").classList.remove("output");
+            }
 
-          if (
-            !doc.fullscreenElement &&
-            !doc.mozFullScreenElement &&
-            !doc.webkitFullscreenElement &&
-            !doc.msFullscreenElement
-          ) {
-            requestFullScreen.call(docEl);
-          } else {
-            cancelFullScreen.call(doc);
-          }
-        }
-        /* ngatur font */
-        function updateFontSizeNote() {
-    const fontSize = document.getElementById('fontSizeSliderNote').value;
-    document.getElementById('output').style.fontSize = fontSize + 'em';
-    document.getElementById('fontSizeLabelNote').textContent = 'Font Size: ' + fontSize + 'em';
-}
+            function clearText() {
+                // Kosongkan nilai pada elemen input dan output
+                document.getElementById("userInput").value = "";
+                document.getElementById("output").innerText = "";
+            }
 
-function changeFontSizeNote() {
-    updateFontSizeNote();
-}
-        function updateFontSize() {
-    const fontSize = document.getElementById('fontSizeSlider').value;
-    document.getElementById('timer').style.fontSize = fontSize + 'em';
-    document.getElementById('fontSizeLabel').textContent = 'Font Size: ' + fontSize + 'em';
-}
+            let timer;
+            let isTimerRunning = false;
+            let isTimerPaused = false;
+            let totalTime;
 
-function changeFontSize() {
-    updateFontSize();
-}
-      </script>
-    </tr>
-  </body>
+            function startTimer() {
+                if (isTimerRunning) {
+                    return;
+                }
+
+                const hours = document.getElementById("hours").value || 0;
+                const minutes = document.getElementById("minutes").value || 0;
+                const seconds = document.getElementById("seconds").value || 0;
+
+                totalTime =
+                    parseInt(hours) * 3600 +
+                    parseInt(minutes) * 60 +
+                    parseInt(seconds);
+
+                if (totalTime <= 0) {
+                    alert("Harap masukkan waktu yang valid.");
+                    return;
+                }
+
+                isTimerRunning = true;
+                document.getElementById("hours").value = "";
+                document.getElementById("minutes").value = "";
+                document.getElementById("seconds").value = "";
+
+                timer = setInterval(function () {
+                    if (!isTimerPaused) {
+                        displayTime(totalTime);
+
+                        if (totalTime <= 0) {
+                            stopTimer();
+                        } else {
+                            totalTime--;
+                        }
+                    }
+                }, 1000);
+            }
+
+            function pauseTimer() {
+                isTimerPaused = !isTimerPaused;
+
+                if (isTimerPaused) {
+                    clearInterval(timer);
+                } else {
+                    startTimer();
+                }
+            }
+
+            function pauseTimer() {
+                alert("Pause. klik ok untuk melanjutkan");
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                isTimerRunning = false;
+                isTimerPaused = false;
+
+                document.getElementById("timer").innerHTML = "00:00:00";
+                document.getElementById("timer").style.color = "white";
+                document.getElementById("timer").classList.remove("blinking"); // Memulai kembali timer setelah
+                document.getElementById("hours").value = "";
+                document.getElementById("minutes").value = "";
+                document.getElementById("seconds").value = "";
+                // Mereset tampilan timer
+            }
+
+            function timesUp(params) {
+                document.getElementById("timer").innerHTML = "WAKTU HABIS !";
+                document.getElementById("timer").style.color = "red";
+            }
+
+            function displayTime(totalSeconds) {
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                const formattedTime = `${hours
+                    .toString()
+                    .padStart(2, "0")}:${minutes
+                    .toString()
+                    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+                document.getElementById("timer").innerHTML = formattedTime;
+
+                // function warna merah setelah 2 menit ...
+                if (totalSeconds <= 360) {
+                    document.getElementById("timer").style.color = "red";
+                } else {
+                    document.getElementById("timer").style.color = "white";
+                    document
+                        .getElementById("timer")
+                        .classList.remove("blinking");
+                }
+
+                if (totalSeconds <= 180) {
+                    document.getElementById("timer").classList.add("blinking");
+                }
+
+                if (totalSeconds <= 0) {
+                    document.getElementById("timer").innerHTML =
+                        "WAKTU HABIS !";
+                }
+            }
+
+            // kode toggleFullscreen ...
+
+            function toggleFullscreen() {
+                const doc = window.document;
+                const docEl = doc.documentElement;
+
+                const requestFullScreen =
+                    docEl.requestFullscreen ||
+                    docEl.mozRequestFullScreen ||
+                    docEl.webkitRequestFullScreen ||
+                    docEl.msRequestFullscreen;
+                const cancelFullScreen =
+                    doc.exitFullscreen ||
+                    doc.mozCancelFullScreen ||
+                    doc.webkitExitFullscreen ||
+                    doc.msExitFullscreen;
+
+                if (
+                    !doc.fullscreenElement &&
+                    !doc.mozFullScreenElement &&
+                    !doc.webkitFullscreenElement &&
+                    !doc.msFullscreenElement
+                ) {
+                    requestFullScreen.call(docEl);
+                } else {
+                    cancelFullScreen.call(doc);
+                }
+            }
+            /* ngatur font */
+            function updateFontSizeNote() {
+                const fontSize =
+                    document.getElementById("fontSizeSliderNote").value;
+                document.getElementById("output").style.fontSize =
+                    fontSize + "em";
+                document.getElementById("fontSizeLabelNote").textContent =
+                    "Font Size: " + fontSize + "em";
+            }
+
+            function changeFontSizeNote() {
+                updateFontSizeNote();
+            }
+            function updateFontSize() {
+                const fontSize =
+                    document.getElementById("fontSizeSlider").value;
+                document.getElementById("timer").style.fontSize =
+                    fontSize + "em";
+                document.getElementById("fontSizeLabel").textContent =
+                    "Font Size: " + fontSize + "em";
+            }
+
+            function changeFontSize() {
+                updateFontSize();
+            }
+        </script>
+    </body>
 </html>
