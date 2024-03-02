@@ -6,13 +6,13 @@ const splashSc = document.querySelector(".splash-screen");
 setTimeout(function () {
   splashSc.classList.add('d-none');
   splashSc.classList.remove('d-flex');
-}, 300);
+}, 5300);
 
 const tutorial = document.querySelector('.tutor-time');
 setTimeout(function () {
   tutorial.classList.add('d-flex');
   tutorial.classList.remove('d-none');
-}, 500);
+}, 5500);
 function closeTutor() {
   tutorial.classList.add('d-none');
   tutorial.classList.remove('d-flex');
