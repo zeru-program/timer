@@ -167,7 +167,7 @@ button {
     padding: 5px;
     background: #42a19e;
 }
-#fontSizeLabelNote {
+#fontSizeLabelNote, #gsjaSizeLabelNote {
     color: white;
     text-align: center;
     border-radius: 3px;
@@ -311,4 +311,7 @@ button {
   padding: 8px 10px;
   border-radius: 3px;
     background: #42a19e;
+}
+#gsja-lw {
+  width: 200px;
 }

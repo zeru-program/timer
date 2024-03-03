@@ -30,6 +30,13 @@ function displayText() {
     document.getElementById("output").style.color = "white";
 }
 
+
+function displayGsja() {
+
+    // Tampilkan nilai di elemen output
+    document.getElementById("output").innerHTML = `<img src="logo-white.png" class="" id="gsja-lw" />`;
+}
+
 function animationText() {
     document.getElementById("output").classList.add("output");
 }
@@ -172,16 +179,25 @@ function toggleFullscreen() {
         cancelFullScreen.call(doc);
     }
 }
-/* ngatur font */
+/* change size */
 function updateFontSizeNote() {
     const fontSize = document.getElementById("fontSizeSliderNote").value;
     document.getElementById("output").style.fontSize = fontSize + "em";
     document.getElementById("fontSizeLabelNote").textContent =
         "Font Size: " + fontSize + "em";
 }
+function updateGsjaSizeNote() {
+    const fontSize = document.getElementById("gsjaSizeSliderNote").value;
+    document.getElementById('gsja-lw').style.width = fontSize + "px";
+    document.getElementById("gsjaSizeLabelNote").textContent =
+        "GSJA Size: " + fontSize + "px";
+}
 
 function changeFontSizeNote() {
     updateFontSizeNote();
+}
+function changeGsjaSizeNote() {
+    updateGsjaSizeNote();
 }
 function updateFontSize() {
     const fontSize = document.getElementById("fontSizeSlider").value;

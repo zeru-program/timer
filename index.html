@@ -83,6 +83,8 @@
         <button class="klik" onclick="clearText()">Hapus</button>
         <button class="klik" onclick="animationText()">Animasi</button>
         <button class="klik" onclick="removeAniText()">Remove Animasi</button>
+        <button class="klik" onclick="displayGsja()">GSJA Logo</button>
+        <br>
         <input
             type="range"
             id="fontSizeSliderNote"
@@ -94,6 +96,18 @@
         />
         <br />
         <span id="fontSizeLabelNote">Font Size: 10em</span>
+        <br />
+        <input
+            type="range"
+            id="gsjaSizeSliderNote"
+            min="10"
+            max="1000"
+            value="200"
+            step="1"
+            oninput="changeGsjaSizeNote()"
+        />
+        <br />
+        <span id="gsjaSizeLabelNote">Gsja size: 200px</span>
         <br />
         <br />
         <br />
