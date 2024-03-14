@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    </head>
+    <body>
+        <img class="gsjaLogo" src="gsjalogo.png" alt="gsja" />
+        <br />
+        <br />
+        <div class="timer-container">
+            <div id="timer">00:00:00</div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+        <div class="BungkusJam">
+            <input type="number" id="hours" placeholder="Jam" />
+            <input type="number" id="minutes" placeholder="Menit" />
+            <input type="number" id="seconds" placeholder="Detik" />
+        </div>
+        <br />
+        <button class="klik" onclick="startTimer()">Start</button>
+        <button class="klik" id="p" onclick="pauseTimer()">Pause</button>
+        <button class="klik" onclick="resetTimer()">Reset</button>
+        <button class="klik" onclick="timesUp()">TimesUp</button>
+        <br />
+        <input
+            type="range"
+            id="fontSizeSlider"
+            min="1"
+            max="25"
+            value="10"
+            step="1"
+            oninput="changeFontSize()"
+        />
+        <br />
+        <span id="fontSizeLabel">Font Size: 10em</span>
+        <br />
+        <br />
+        <!-- Tambahkan tombol fullscreen -->
+        <img
+            class="full"
+            onclick="toggleFullscreen()"
+            src="fullscreen.png"
+            alt=""
+        />
+        <img
+            class="full"
+            onclick="toggleFullscreen()"
+            src="exit-fullscreen.png"
+            alt=""
+        />
+        <br />
+        <br />
+        <label class="text-light fw-bolder button-tutor" onclick="openTutor()">?</label>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <label for="userInput" class="input">Text Note </label>
+        <label for="userInput" class="input">Masukkan Teks:</label>
+        <br />
+        <input
+            class="input1"
+            type="text-area"
+            id="userInput"
+            placeholder="Ketik di sini..."
+        />
+        <br />
+        <button class="klik" onclick="displayText()">Tampilkan</button>
+        <button class="klik" onclick="clearText()">Hapus</button>
+        <button class="klik" onclick="animationText()">Animasi</button>
+        <button class="klik" onclick="removeAniText()">Remove Animasi</button>
+        <button class="klik" onclick="displayGsja()">GSJA Logo</button>
+        <br>
+        <input
+            type="range"
+            id="fontSizeSliderNote"
+            min="1"
+            max="20"
+            value="10"
+            step="1"
+            oninput="changeFontSizeNote()"
+        />
+        <br />
+        <span id="fontSizeLabelNote">Font Size: 10em</span>
+        <br />
+        <input
+            type="range"
+            id="gsjaSizeSliderNote"
+            min="10"
+            max="1000"
+            value="200"
+            step="1"
+            oninput="changeGsjaSizeNote()"
+        />
+        <br />
+        <span id="gsjaSizeLabelNote">Gsja size: 200px</span>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div id="output"></div>
+        <br />
+        <br />
+        <div class="d-flex justify-content-center align-items-center splash-screen position-fixed top-0">
+         <img src="gsjalogo.png" class="img-splash position-fixed opc-img" alt="">
+         <div class="loader z-3"></div>
+        </div>
+        <div class="d-none justify-content-center align-items-center tutor-time position-fixed top-0 flex-column">
+          <label for="" class="closeTutor" onclick="closeTutor()">X</label>
+         <label class="bg-primary text-light">Tutorial</label>
+         <p>Masukan angka sesuai kebutuhan! 
+         <br>biru = jam
+         <br>hijau = menit
+         <br>merah muda = detik
+        <br><br> Cara penggunaan :
+        <br>Masukan angka sesuai kebutuhan lalu klik start, untuk menghentikan waktu klik pause, untuk mengubah waktu kembali jadi seperti semula 00:00:00 klik reset, untuk menambah keterangan 'Waktu hahis' klik TimesUp,untuk memperbesar tampilan web/fullscreen klik icon pembesar dipaling bawah, untuk mengembalikan fullscreen menjadi normal klik icon memperkecil disebelahnya.</p>
+        </div>
+        <script src="script.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>
